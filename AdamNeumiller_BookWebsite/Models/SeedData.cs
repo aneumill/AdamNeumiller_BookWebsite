@@ -60,11 +60,11 @@ namespace AdamNeumiller_BookWebsite.Models
                         {
                            
                             Title = "American Ulysses",
-                            Author = "Alice Schroeder",
-                            Publisher = "Bantam",
+                            Author = "Ronald C. White",
+                            Publisher = "Random House",
                             ISBN = "978-0812981254",
                             Category = "Non-Fiction, Biography",
-                            Price = 21.54,
+                            Price = 11.61,
 
                         },
                           new Book

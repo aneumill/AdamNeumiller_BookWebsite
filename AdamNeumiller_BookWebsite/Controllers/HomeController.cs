@@ -13,14 +13,16 @@ namespace AdamNeumiller_BookWebsite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private iBookRepository _repository;
+        public HomeController(ILogger<HomeController> logger, iBookRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.Books);
         }
 
         public IActionResult Privacy()

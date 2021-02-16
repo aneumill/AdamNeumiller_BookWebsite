@@ -60,7 +60,9 @@ namespace AdamNeumiller_BookWebsite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                    
             });
+            SeedData.EnsurePopulated(app);
         }
     }
 }

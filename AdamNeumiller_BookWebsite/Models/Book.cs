@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdamNeumiller_BookWebsite.Models
 {
+    //This is the model for the Book Databse, See seed data to edit the inputs
     public class Book
     {
         [Key, Required]

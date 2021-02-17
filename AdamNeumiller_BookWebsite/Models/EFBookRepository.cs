@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace AdamNeumiller_BookWebsite.Models
 {
+    //This class inherits from iBookRepository
     public class EFBookRepository : iBookRepository
     {
         private BookDBcontext _context; 
 
-        //Constructor 
+        //Constructor for the class
         public EFBookRepository (BookDBcontext context)
         {
             _context = context; 

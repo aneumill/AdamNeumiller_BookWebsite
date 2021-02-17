@@ -7,15 +7,18 @@
 <div class="text-center">
     <h1>Good Reads Book Database!</h1>
     <div class="text-center">
-        <table class="center table table-dark table-striped">
+        <table class="center table table-dark table-striped table-hover">
             <!--Table for the database-->
             <thead>
                 <tr>
                     <th>Book ID</th>
                     <th>Title</th>
-                    <th>Author</th>
+                    <th>Author First Name</th>
+                    <th>Author Middle Initial</th>
+                    <th>Author Last Name</th>
                     <th>Publisher</th>
                     <th>ISBN</th>
+                    <th>Classification</th>
                     <th>Category</th>
                     <th>Price</th>
 
@@ -26,18 +29,21 @@
 
             <tbody>
                 <!--Loops through all of the items in the database to print them out here-->
-                @foreach  (var x in Model)
+                @foreach (var x in Model)
                 {
-                <tr id="highlight">
-                    <td>@x.BookId </td>
-                    <td>@x.Title</td>
-                    <td>@x.Author</td>
-                    <td>@x.Publisher</td>
-                    <td>@x.ISBN</td>
-                    <td>@x.Category</td>
-                    <td>$@x.Price</td>
-                </tr>
-       }
+                    <tr id="highlight">
+                        <td>@x.BookId </td>
+                        <td>@x.Title</td>
+                        <td>@x.AuthorFirstName</td>
+                        <td>@x.AuthorMiddleInitial</td>
+                        <td>@x.AuthorLastName</td>
+                        <td>@x.Publisher</td>
+                        <td>@x.ISBN</td>
+                        <td>@x.Classification</td>
+                        <td>@x.Category</td>
+                        <td>$@x.Price</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

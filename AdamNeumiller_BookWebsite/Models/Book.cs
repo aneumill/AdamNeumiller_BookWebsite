@@ -13,13 +13,19 @@ namespace AdamNeumiller_BookWebsite.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string AuthorFirstName { get; set; }
+        public string AuthorMiddleInitial { get; set; } = "";
+        [Required]
+        public string AuthorLastName { get; set; }
+      
         [Required]
         public string Publisher { get; set; }
-        [Required]
+        [Required, RegularExpression("[0-9]{3}-[0-9]{10}")]
         public string ISBN { get; set; }
         //Regular Expression for Regex
-        [Required, RegularExpression("[7,8,9]{3}-[0-9]{10}")]
+        [Required]
+        public string Classification { get; set; }
+        [Required]
         public string Category { get; set; }
         [Required]
         public double Price { get; set;  }

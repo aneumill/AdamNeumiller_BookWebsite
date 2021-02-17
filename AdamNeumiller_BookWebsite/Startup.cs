@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,10 +27,12 @@ namespace AdamNeumiller_BookWebsite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            //Hilton added this part
+            //Hilton added this part--> Jumpstarts the process
             services.AddDbContext<BookDBcontext>(options =>
                {
-                   options.UseSqlServer(Configuration["ConnectionStrings:BookConnection"]);
+                   string path = Directory.GetCurrentDirectory();
+                   //Solution to properly save the database to the proeject file. Puts the current project file directory into the connection string
+                   options.UseSqlServer(Configuration["ConnectionStrings:BookConnection"].Replace("|DataDirectory|", path));
                });
 
             services.AddScoped<iBookRepository, EFBookRepository>();

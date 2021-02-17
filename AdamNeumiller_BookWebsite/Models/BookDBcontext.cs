@@ -9,6 +9,7 @@ namespace AdamNeumiller_BookWebsite.Models
 {
     public class BookDBcontext : DbContext     
     {
+        //Constructor. These are the options(list of things) that are passed into the database
         public BookDBcontext (DbContextOptions<BookDBcontext> options) : base (options)
         {
 

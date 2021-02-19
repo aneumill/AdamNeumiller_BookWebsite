@@ -23,7 +23,7 @@ namespace AdamNeumiller_BookWebsite.Models
             if (!context.Books.Any())
             {
                 context.Books.AddRange(
-                    //Populates the database
+                    //Populates the database with seed data
                     new Book
                     {
 

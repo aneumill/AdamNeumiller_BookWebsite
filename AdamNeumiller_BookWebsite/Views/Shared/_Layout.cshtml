@@ -10,26 +10,30 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body class="bg-light">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark text-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Good Reads Bookstore</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Good Reads Bookstore</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               
+
             </div>
+
         </nav>
     </header>
-    <div class="container">
+    <div>
+        <h2 class="text-center text-weight-bold text-dark">View Our Entire Collection Here</h2>
+    </div>
+    <div class="container col-12">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-white bg-dark">
         <div class="container text-center">
             &copy; 2021 - AdamNeumiller Assignment #5
         </div>
@@ -38,5 +42,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

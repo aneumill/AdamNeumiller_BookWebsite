@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AdamNeumiller_BookWebsite.Models.ViewModels;
 
 namespace AdamNeumiller_BookWebsite.Controllers
 {
@@ -14,17 +15,43 @@ namespace AdamNeumiller_BookWebsite.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private iBookRepository _repository;
+
+        //Make a variable that sets the number of pages viewable through pagination
+        public int ItemsPerPage = 5; 
+
         public HomeController(ILogger<HomeController> logger, iBookRepository repository)
         {
             _logger = logger;
             _repository = repository;
         }
 
-        public IActionResult Index()
+        // Pass int page = 1 and returns 
+        public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
-        }
+            //Returns the proper view with correct number of fields  (This is a query written out in Linq)
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                //Lambda Function to dynamically print the appropriate number of fields return
+                .OrderBy(p => p.BookId)
+                .Skip((page - 1) * ItemsPerPage )
+                .Take(ItemsPerPage)
+                
+                ,
+                //Creating a new object Paging Info based on  the Paging Info Model 
+                PagingInfo = new PagingInfo
+                {
+                    //Inputting the values into 
+                    CurrentPage = page, //starts with page 1 
+                    ItemsPerPage = ItemsPerPage, //Sets Items to Page to the Page Size as delcared in the model
+                    TotalNumItems = _repository.Books.Count() //Total number of books pulled from the repository 
+                }
+            }); ;
 
+
+
+
+        }
         public IActionResult Privacy()
         {
             return View();

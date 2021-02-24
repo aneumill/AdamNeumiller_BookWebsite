@@ -60,11 +60,16 @@ namespace AdamNeumiller_BookWebsite
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                    
+            endpoints.MapControllerRoute(
+                //Customize the URL Mapping to work for /P
+                "pagination",
+                "/P{page}",
+                new { Controller = "Home", action = "Index" });
+
+           
+                endpoints.MapDefaultControllerRoute();
             });
+
             SeedData.EnsurePopulated(app);
         }
     }

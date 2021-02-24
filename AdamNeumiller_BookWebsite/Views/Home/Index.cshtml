@@ -1,21 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model BookListViewModel
 
-@model IQueryable<Book> 
 
 <!--Adam Neumiller 
-    
+    Section 3
     The purpose of this program is to build a website that is links to a database database. The database was built using a 
-    model first approach. I lost points last time for "not having enough comments", I a diligent effor to comment my code as 
-    much as I thought was appropriate. 
-    
+    model first approach. 
+
+    Assignment #6 Covered the implementation of pagination and boostrap styling for that. I updated the database with my top
+    book choices. The videos showed ways to make the code dynamic (i.e. calling in the styling in models. )
+
+    Implmented the following bootstrap principles not covered in the videos or chapter 7
+
+    1) table-hover : This class highlights the tables rows when the mouse hovers over it, thus improving readability 
+    2) table-strpied : this makes the table rows striped and increases the readibility 
+    3) table-bordered : this adds borders around the cells of the table
+    4) table-dark : Changes the table to dark from the default light
+    5) font-weight-bold : changes the font text to bold
+    6) text-dark : Makes the text black
     
     -->
 <div class="text-center">
-    <h1>Good Reads Book Database!</h1>
     <div class="text-center">
-        <table class="center table table-dark table-striped table-hover">
+        <table class="center table table-dark table-striped table-hover table-bordered">
             <!--Table for the database-->
             <thead>
                 <tr>
@@ -29,6 +38,7 @@
                     <th>Classification</th>
                     <th>Category</th>
                     <th>Price</th>
+                    <th>Total Pages</th>
 
                 </tr>
             </thead>
@@ -37,9 +47,9 @@
 
             <tbody>
                 <!--Loops through all of the items in the database to print them out here-->
-                @foreach (var x in Model)
+                @foreach (var x in Model.Books)
                 {
-                    <tr id="highlight">
+                    <tr class="table-hover">
                         <td>@x.BookId </td>
                         <td>@x.Title</td>
                         <td>@x.AuthorFirstName</td>
@@ -50,12 +60,25 @@
                         <td>@x.Classification</td>
                         <td>@x.Category</td>
                         <td>$@x.Price</td>
+                        <td>@x.PageNumber</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+    <!--Import the page navigation Model and Action
+    <div page-model="@Model.PagingInfo" page-Action="Index" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-ouline-dark" page-class-selected="btn-light"
+         class="pull-right m1 "> </div>
+    -->
+    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark"
+         class="text-center bg-light m1">
 
+
+
+    </div>
 </div>
 
 

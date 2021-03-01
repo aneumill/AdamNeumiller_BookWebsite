@@ -30,6 +30,8 @@ namespace AdamNeumiller_BookWebsite.Models
         public string Category { get; set; }
         [Required]
         public double Price { get; set;  }
+        [Required]
+        public int PageNumber { get; set; }
 
 
     }

@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+
+@model Book
+
+<!--Partial view for the Index.html-->
+
+<tr class="table-hover">
+    <td>@Model.BookId </td>
+    <td>@Model.Title</td>
+    <td>@Model.AuthorFirstName</td>
+    <td>@Model.AuthorMiddleInitial</td>
+    <td>@Model.AuthorLastName</td>
+    <td>@Model.Publisher</td>
+    <td>@Model.ISBN</td>
+    <td>@Model.Classification</td>
+    <td>@Model.Category</td>
+    <td>$@Model.Price</td>
+    <td>@Model.PageNumber</td>
+</tr>

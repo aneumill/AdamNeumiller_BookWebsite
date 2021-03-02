@@ -62,7 +62,7 @@ namespace AdamNeumiller_BookWebsite.Models
                           Publisher = "Bantam",
                           ISBN = "978-0553384611",
                           Classification = "Non-Fiction",
-                          Category = " Biography",
+                          Category = "Biography",
                           Price = 21.54,
                           PageNumber = 832
                       },

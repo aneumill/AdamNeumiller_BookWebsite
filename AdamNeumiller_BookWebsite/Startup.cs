@@ -60,13 +60,35 @@ namespace AdamNeumiller_BookWebsite
 
             app.UseEndpoints(endpoints =>
             {
+                //Building an enpoint
+            endpoints.MapControllerRoute("catpage",
+                "{category}/{page:int}",
+                new { Controller = "Home", action = "Index" }
+                );
+
+                //Another endpoint i.e. just the page number
+                endpoints.MapControllerRoute("page", 
+                    "{page:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                //Another endpoint
+                endpoints.MapControllerRoute("category", "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 });
+
+             //Endpoint for P and number 
             endpoints.MapControllerRoute(
                 //Customize the URL Mapping to work for /P
                 "pagination",
-                "/P{page}",
+                "Books/P{page}",
                 new { Controller = "Home", action = "Index" });
 
-           
+                  endpoints.MapControllerRoute(
+                //Customize the URL Mapping to work for /P
+                "pagination",
+                "P{page}",
+                new { Controller = "Home", action = "Index" });
+
+
                 endpoints.MapDefaultControllerRoute();
             });
 

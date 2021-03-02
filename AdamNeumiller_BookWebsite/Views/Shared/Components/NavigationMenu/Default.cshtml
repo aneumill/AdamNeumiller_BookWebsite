@@ -1,0 +1,19 @@
+﻿@model IEnumerable<string>
+
+<!--This is the view that dipslays the navigation menu filters -->
+
+<!--Sets the home button-->
+<a class="btn text-white col-10 btn-dark" style="margin:2%" asp-action="Index" asp-controller="Home" asp-route-category ="">
+    Home
+</a>
+
+<!--Loops through and sets bootstrap based on the category selected. Includeds dynamic highlighting-->
+@foreach (string category in Model)
+{
+<a class="btn text-white col-10 @(category == ViewBag.SelectedCategory ? "btn-secondary" : "btn-dark" )" style="margin:2%"
+   asp-action="Index"
+   asp-controller="Home"
+   asp-route-category="@category"
+   asp-route-page="1">
+    @category</a>
+    }

@@ -2,25 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 @model BookListViewModel
+<!--Adam Neumiller
+
+ Section 3 Assignment #7
+
+ Assignment #7
+
+    The following functionalites were added to the program
+
+    •Add the ability to filter by category in the Controller•Improve the URLs to a pattern that is more user-friendly
+    •Build in the functionality so that the category is dynamically-displayed in the URL
+    •Insert the category menu using theView Componentmethod
+    •Build the partial viewused by the View Component to dynamicallydisplay the list of categorie
+    s•Filter the results by category•Dynamically highlight the category that has been selected
+    •Fix the page numbering to match the number ofitems by category
 
 
-<!--Adam Neumiller 
-    Section 3
-    The purpose of this program is to build a website that is links to a database database. The database was built using a 
-    model first approach. 
-
-    Assignment #6 Covered the implementation of pagination and boostrap styling for that. I updated the database with my top
-    book choices. The videos showed ways to make the code dynamic (i.e. calling in the styling in models. )
-
-    Implmented the following bootstrap principles not covered in the videos or chapter 7
-
-    1) table-hover : This class highlights the tables rows when the mouse hovers over it, thus improving readability 
-    2) table-strpied : this makes the table rows striped and increases the readibility 
-    3) table-bordered : this adds borders around the cells of the table
-    4) table-dark : Changes the table to dark from the default light
-    5) font-weight-bold : changes the font text to bold
-    6) text-dark : Makes the text black
-    
     -->
 <div class="text-center">
     <div class="text-center">
@@ -49,19 +46,8 @@
                 <!--Loops through all of the items in the database to print them out here-->
                 @foreach (var x in Model.Books)
                 {
-                    <tr class="table-hover">
-                        <td>@x.BookId </td>
-                        <td>@x.Title</td>
-                        <td>@x.AuthorFirstName</td>
-                        <td>@x.AuthorMiddleInitial</td>
-                        <td>@x.AuthorLastName</td>
-                        <td>@x.Publisher</td>
-                        <td>@x.ISBN</td>
-                        <td>@x.Classification</td>
-                        <td>@x.Category</td>
-                        <td>$@x.Price</td>
-                        <td>@x.PageNumber</td>
-                    </tr>
+                    //See BookSummary.cshtml
+                    <partial name="BookSummary" model="x" />
                 }
             </tbody>
         </table>
@@ -74,7 +60,7 @@
     <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
          page-class-normal="btn-outline-dark"
          page-class-selected="btn-dark"
-         class="text-center bg-light m1">
+         class="text-center bg-light m1" page-url-category="@Model.CurrentCategory">
 
 
 

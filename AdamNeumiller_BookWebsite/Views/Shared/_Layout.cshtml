@@ -25,17 +25,25 @@
         </nav>
     </header>
     <div>
-        <h2 class="text-center text-weight-bold text-dark">View Our Entire Collection Here</h2>
+        
     </div>
-    <div class="container col-12">
-        <main role="main" class="pb-3">
+ <div class="row m-1 p-1 " >
+    <div class="col-2">
+        <h3 class="text-weight-bold text-dark">Categories</h3>
+        <vc:navigation-menu/>
+    </div>
+    <div class="col-10" style="margin-top:.5%">
+       
             @RenderBody()
-        </main>
+        
     </div>
+  </div>
+
+
 
     <footer class="border-top footer text-white bg-dark">
         <div class="container text-center">
-            &copy; 2021 - AdamNeumiller Assignment #5
+            &copy; 2021 - AdamNeumiller Assignment #7
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

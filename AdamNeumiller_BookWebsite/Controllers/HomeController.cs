@@ -26,7 +26,7 @@ namespace AdamNeumiller_BookWebsite.Controllers
         }
 
         // Pass int page = 1 and returns 
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             //Returns the proper view with correct number of fields  (This is a query written out in Linq)
             return View(new BookListViewModel
@@ -36,7 +36,7 @@ namespace AdamNeumiller_BookWebsite.Controllers
                 .Where(p => category == null || p.Category == category)
                 //Lambda Function to dynamically print the appropriate number of fields return
                 .OrderBy(p => p.BookId)
-                .Skip((page - 1) * ItemsPerPage )
+                .Skip((pageNum - 1) * ItemsPerPage )
                 .Take(ItemsPerPage)
                 
                 ,
@@ -44,7 +44,7 @@ namespace AdamNeumiller_BookWebsite.Controllers
                 PagingInfo = new PagingInfo
                 {
                     //Inputting the values into 
-                    CurrentPage = page, //starts with page 1 
+                    CurrentPage = pageNum, //starts with page 1 
                     ItemsPerPage = ItemsPerPage, //Sets Items to Page to the Page Size as delcared in the model
                     TotalNumItems = category == null ? _repository.Books.Count() :
                         _repository.Books.Where(x => x.Category == category).Count()

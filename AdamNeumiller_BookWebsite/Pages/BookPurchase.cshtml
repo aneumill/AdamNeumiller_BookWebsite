@@ -1,0 +1,55 @@
+﻿@page
+@model AdamNeumiller_BookWebsite.Pages.BookPurchaseModel
+@{
+
+}
+<!-- This is the Book Purchase View-->
+<div class="text-center">
+    <h2> Your Cart</h2>
+
+    <table class="center table table-dark table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Title </th>
+                <th>Price </th>
+                <th>Quantity </th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Loop through the model -->
+            @foreach (var line in Model.Cart.Lines)
+            {
+            <tr>
+                <td>@line.Book.Title</td>
+                <td>@line.Book.Price</td>
+                <td>@line.Quanitity</td>
+                <td>@((line.Quanitity * line.Book.Price).ToString("c"))</td>
+                <td class="text-center">
+                    <!-- The code for the remove button-->
+                    <form asp-page-handler="Remove" method="post">
+                        <input type="hidden" name="BookId"
+                               value="@line.Book.BookId" />
+                        <input type="hidden" name="returnUrl"
+                               value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Remove
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="text-right" colspan="3">Total:</td>
+                <td>@Model.Cart.ComputeTotalSum().ToString("c")</td>
+              
+</tr>
+        </tfoot>
+    </table>
+</div>
+<div class="text-center">
+    <a class="btn btn-dark" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>

@@ -9,9 +9,21 @@
     <title>@ViewData["Title"] -Good Reads Bookstore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 </head>
 <body class="bg-light">
-    <header>
+    <div class="bg-dark text-white p-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand">Good Reads Bookstore</div>
+                <div class="col-6 text-right">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </div>
+    </div>
+    @* The old Header....
+        <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark text-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Good Reads Bookstore</a>
@@ -23,27 +35,27 @@
             </div>
 
         </nav>
-    </header>
+    </header>*@
     <div>
-        
+
     </div>
- <div class="row m-1 p-1 " >
-    <div class="col-2">
-        <h3 class="text-weight-bold text-dark">Categories</h3>
-        <vc:navigation-menu/>
-    </div>
-    <div class="col-10" style="margin-top:.5%">
-       
+    <div class="row m-1 p-1 ">
+        <div class="col-2">
+            <h3 class="text-weight-bold text-dark">Categories</h3>
+            <vc:navigation-menu />
+        </div>
+        <div class="col-10" style="margin-top:.5%">
+
             @RenderBody()
-        
+
+        </div>
     </div>
-  </div>
 
 
 
     <footer class="border-top footer text-white bg-dark">
         <div class="container text-center">
-            &copy; 2021 - AdamNeumiller Assignment #7
+            &copy; 2021 - AdamNeumiller Assignment #8
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

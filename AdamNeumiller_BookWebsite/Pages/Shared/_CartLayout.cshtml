@@ -1,0 +1,28 @@
+﻿<!--This is the _Shared Layout for the Pages-->
+<!Doctype html>
+<html>
+<head>
+    <meta name="viewpoint" content="width=content-width" />
+    <title>Good Reads Books</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <div class="bg-dark text-white p-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand">Good Reads Bookstore</div>
+                <div class="col-6 text-right">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-1 p-1">
+        @RenderBody()
+    </div>
+</body>
+</html>

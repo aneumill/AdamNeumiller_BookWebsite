@@ -11,6 +11,7 @@ namespace AdamNeumiller_BookWebsite.Models
     {
         [Key, Required]
         public int BookId { get; set; }
+        public long BookID { get; internal set; }
         [Required]
         public string Title { get; set; }
         [Required]

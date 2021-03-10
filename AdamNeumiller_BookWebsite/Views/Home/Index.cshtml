@@ -6,16 +6,14 @@
 
  Section 3 Assignment #7
 
- Assignment #7
+ Assignment #8
 
-    The following functionalites were added to the program
-
-    •Add the ability to filter by category in the Controller•Improve the URLs to a pattern that is more user-friendly
-    •Build in the functionality so that the category is dynamically-displayed in the URL
-    •Insert the category menu using theView Componentmethod
-    •Build the partial viewused by the View Component to dynamicallydisplay the list of categorie
-    s•Filter the results by category•Dynamically highlight the category that has been selected
-    •Fix the page numbering to match the number ofitems by category
+    IS 413 –HiltonAssignment #8Continuing the Bookstore project from Assignments #5-7, add the ability for the user to add books to their 
+    shopping cart.  The cart should update the quantity, price, subtotal, and total for each book that is added.  The information should stay 
+    in the cart as long as the app is running.Include the functionality for the user to “Continue Shopping” and go back to the page where they
+    left off when they added the item to their cart.Also add the functionality to the app to:•Remove items from the cart•Display the cart summary
+    on the navbar so that it is displayed on each page(#notcoveredinthevideos, but Ch. 9 in the Freeman textbook will be a great resource)Make sure 
+    to:•Use a Razor page forthe Shopping Cart.•Use a SQLite database.  (Convert from SQLServer if necessary.)
 
 
     -->
@@ -36,6 +34,7 @@
                     <th>Category</th>
                     <th>Price</th>
                     <th>Total Pages</th>
+                    <th>Purchase</th>
 
                 </tr>
             </thead>
@@ -57,6 +56,7 @@
          page-class="btn" page-class-normal="btn-ouline-dark" page-class-selected="btn-light"
          class="pull-right m1 "> </div>
     -->
+
     <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
          page-class-normal="btn-outline-dark"
          page-class-selected="btn-dark"

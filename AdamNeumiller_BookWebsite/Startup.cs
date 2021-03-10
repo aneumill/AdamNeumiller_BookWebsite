@@ -1,6 +1,7 @@
 using AdamNeumiller_BookWebsite.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +36,17 @@ namespace AdamNeumiller_BookWebsite
                    options.UseSqlite(Configuration["ConnectionStrings:BookConnection"]);
                        
                        //.Replace("|DataDirectory|", path));
+
                });
 
             services.AddScoped<iBookRepository, EFBookRepository>();
+            services.AddRazorPages();
+            //Set up the session
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +64,8 @@ namespace AdamNeumiller_BookWebsite
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //Build for the session 
+            app.UseSession();
 
             app.UseRouting();
 
@@ -64,34 +75,37 @@ namespace AdamNeumiller_BookWebsite
             {
                 //Building an enpoint
             endpoints.MapControllerRoute("catpage",
-                "{category}/{page:int}",
+                "{category}/{pageNum:int}",
                 new { Controller = "Home", action = "Index" }
                 );
 
                 //Another endpoint i.e. just the page number
-                endpoints.MapControllerRoute("page", 
-                    "{page:int}",
+                endpoints.MapControllerRoute("pageNum", 
+                    "{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
 
                 //Another endpoint
                 endpoints.MapControllerRoute("category", "{category}",
-                    new { Controller = "Home", action = "Index", page = 1 });
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
 
              //Endpoint for P and number 
             endpoints.MapControllerRoute(
                 //Customize the URL Mapping to work for /P
                 "pagination",
-                "Books/P{page}",
+                "Books/P{pageNum}",
                 new { Controller = "Home", action = "Index" });
 
                   endpoints.MapControllerRoute(
                 //Customize the URL Mapping to work for /P
                 "pagination",
-                "P{page}",
+                "P{pageNum}",
                 new { Controller = "Home", action = "Index" });
 
 
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
+               
+
             });
 
             SeedData.EnsurePopulated(app);

@@ -32,6 +32,10 @@ namespace AdamNeumiller_BookWebsite.Migrations
                     b.Property<string>("AuthorMiddleInitial")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("BookPicURL")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("TEXT");

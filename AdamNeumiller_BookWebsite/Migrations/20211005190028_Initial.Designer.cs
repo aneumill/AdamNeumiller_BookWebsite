@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdamNeumiller_BookWebsite.Migrations
 {
     [DbContext(typeof(BookDBcontext))]
-    [Migration("20210303022909_Initial")]
+    [Migration("20211005190028_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,10 @@ namespace AdamNeumiller_BookWebsite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AuthorMiddleInitial")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BookPicURL")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Category")

@@ -34,7 +34,7 @@ namespace AdamNeumiller_BookWebsite.Pages
         public IActionResult OnPost(long bookID, string returnURL)
         {
             Book book = _repository.Books
-                .FirstOrDefault(p => p.BookID == bookID);
+                .FirstOrDefault(p => p.BookId == bookID);
             Cart.AddItem(book, 1);
             return RedirectToPage(new { returnUrl = returnURL });
             //Book book = _repository.Books.FirstOrDefault(p => p.BookID == bookID);

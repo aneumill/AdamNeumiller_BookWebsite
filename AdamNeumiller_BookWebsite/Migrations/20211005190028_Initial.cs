@@ -13,6 +13,7 @@ namespace AdamNeumiller_BookWebsite.Migrations
                     BookId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
+                    BookPicURL = table.Column<string>(type: "TEXT", nullable: false),
                     AuthorFirstName = table.Column<string>(type: "TEXT", nullable: false),
                     AuthorMiddleInitial = table.Column<string>(type: "TEXT", nullable: true),
                     AuthorLastName = table.Column<string>(type: "TEXT", nullable: false),

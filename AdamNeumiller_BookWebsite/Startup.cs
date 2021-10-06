@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,7 +35,7 @@ namespace AdamNeumiller_BookWebsite
                {
                    string path = Directory.GetCurrentDirectory();
                    //Solution to properly save the database to the proeject file. Puts the current project file directory into the connection string
-                   options.   UseSqlServer(Configuration["ConnectionStrings:BookConnection"].Replace("|DataDirectory|", path));
+                   options.UseMySql(Configuration["ConnectionStrings:BookConnection"].Replace("|DataDirectory|", path));
                        
                        //.Replace("|DataDirectory|", path));
 
@@ -109,7 +110,7 @@ namespace AdamNeumiller_BookWebsite
 
             });
 
-            SeedData.EnsurePopulated(app);
+            //SeedData.EnsurePopulated(app);
         }
     }
 }

@@ -11,9 +11,10 @@ namespace AdamNeumiller_BookWebsite.Models
     {
         [Key, Required]
         public int BookId { get; set; }
-        public long BookID { get; internal set; }
         [Required]
         public string Title { get; set; }
+        [Required]
+        public string BookPicURL { get; set; }
         [Required]
         public string AuthorFirstName { get; set; }
         public string AuthorMiddleInitial { get; set; } = "";
@@ -33,7 +34,5 @@ namespace AdamNeumiller_BookWebsite.Models
         public double Price { get; set;  }
         [Required]
         public int PageNumber { get; set; }
-
-
     }
 }

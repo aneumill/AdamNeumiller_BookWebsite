@@ -2,7 +2,7 @@
 version: 0.2
 env:
    variables:
-     PROJECT: AWSElasticBeanstalkCICDApp
+     PROJECT: AdamNeumiller_BookWebsite
      DOTNET_CORE_RUNTIME: 3.1
 phases:
   install:

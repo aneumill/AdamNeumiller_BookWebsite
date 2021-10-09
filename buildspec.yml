@@ -22,11 +22,11 @@ phases:
       - echo Publish started on `date`
       - dotnet publish -c Release  -r linux-x64 -o ./build_output ./${PROJECT}/${PROJECT}.csproj --self-contained false
       - cp Procfile ./build_output
-artifacts:
-  files:
-    - '**/*'
-  base-directory: ./build_output
-  discard-paths: no
+# artifacts:
+#   files:
+#     - '**/*'
+#   base-directory: ./build_output
+#   discard-paths: no
 reports:
   ${PROJECT}:
     file-format: VisualStudioTrx
